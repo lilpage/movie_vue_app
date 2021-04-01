@@ -1,7 +1,12 @@
 <template>
   <div class="movie-show">
     <div>
-     {{ movie }}
+      <h2>{{ movie.title }}</h2>
+      <h3>Director: {{ movie.director }}, Year: {{ movie.year }}</h3>
+      <p> {{ movie.plot }} </p>
+     <router-link v-bind:to="`/movies/${movie.id}/edit`">
+     <p>Edit</p>
+     </router-link>
     </div>
   </div>
 </template>
@@ -15,8 +20,8 @@ export default {
       movie: {},
     };
   },
-  ceated: function () {
-    axios.get("/api/movies/1").then((response) => {
+  created: function () {
+    axios.get("/api/movies/" + this.$route.params.id).then((response) => {
       console.log(response.data);
       this.movie = response.data;
     });
