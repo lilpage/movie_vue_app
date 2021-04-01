@@ -9,6 +9,8 @@ import MovieNew from "../views/MovieNew.vue";
 import MovieShow from "../views/MovieShow.vue";
 import MovieEdit from "../views/MovieEdit.vue";
 
+
+
 Vue.use(VueRouter);
 
 const routes = [

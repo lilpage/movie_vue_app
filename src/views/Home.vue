@@ -1,13 +1,28 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+    <div class="jumbotron">
+      <h1 class="display-4">Movies!</h1>
+      <p class="lead">Do you like movies?</p>
+      <hr class="my-4">
+      <p>I like movies.</p>
+    </div>
     <!-- Index -->
-    <div v-for="movie in movies" v-bind:key="movie.id">
-      <h2>{{ movie.title }}</h2>
-      <h3>Director: {{ movie.director }}, Year: {{ movie.year }}</h3>
-      <p> {{ movie.plot }} </p>
+  <div class="row">
+    <div class="col-sm-6" v-for="movie in movies" v-bind:key="movie.id">
+      <div class="card">
+        <div class="card-body">
+          <h2>{{ movie.title }}</h2>
+          <h3>Director: {{ movie.director }}, Year: {{ movie.year }}</h3>
+          <p> {{ movie.plot }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- <div v-for="movie in movies" v-bind:key="movie.id"> -->
+
     <!-- Show -->
-      <button v-on:click="movieShow(movie)">More Info</button>
+      <!-- <button v-on:click="movieShow(movie)">More Info</button>
       <dialog id="movie-info">
         <form method="dialog">
           Title: <input type="text" v-model="currentMovie.title"> <br>
@@ -20,16 +35,16 @@
         </form>
       </dialog>
     </div>
-    <br>
+    <br> -->
     <!-- Create -->
-    <div id="create">
+    <!-- <div id="create">
       <h3>Add New Movie</h3>
       Title: <input type="text" v-model="movieTitle"> <br>
       Year: <input type="text" v-model="movieYear"> <br>
       Director: <input type="text" v-model="movieDirector"> <br>
       Plot: <input type="text" v-model="moviePlot"> <br> <br>
     <button v-on:click="moviesCreate()">Add Movie</button>
-    </div>
+    </div> -->
   </div>
 </template>
 <style>
@@ -38,10 +53,13 @@ div {
   background-color: rgb(245, 166, 180);
 }
 #create {
-  background-color: silver;
+  background-color: palevioletred;
   width: 250px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 25px;
+}
+.jumbotron {
+  background-color: palevioletred !important;
 }
 </style>
 
