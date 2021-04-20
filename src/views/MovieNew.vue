@@ -4,7 +4,9 @@
       Title: <input type="text" v-model="movieTitle"> <br>
       Year: <input type="text" v-model="movieYear"> <br>
       Director: <input type="text" v-model="movieDirector"> <br>
-      Plot: <input type="text" v-model="moviePlot"> <br> <br>
+      Plot: <input type="text" v-model="moviePlot"> 
+      <small v-if="moviePlot.length >= 500">Limit 500 characters.</small>
+       <br> <br>
     <button v-on:click="moviesCreate()">Add Movie</button>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <nav class="navbar navbar-expand-lg navbar-primary">
+      <!-- <nav class="navbar navbar-expand-lg navbar-primary">
   <a class="navbar-brand" href="/">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -29,13 +29,17 @@
       </li>
     </ul>
   </div>
-</nav>
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/signup">Signup</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/logout">Logout</router-link> |
+</nav> -->
+      <router-link to="/">Home</router-link> |
+      <span v-if="isLoggedIn()">
+        <router-link to="/logout">Logout</router-link> |
+      </span>
+      <span v-else>
+        <router-link to="/signup">Signup</router-link> |
+        <router-link to="/login">Login</router-link> |
+      </span>
       <router-link to="/movies">All Movies</router-link> |
-      <router-link to="/movies/new">Add Movie</router-link> | -->
+      <router-link to="/movies/new">Add Movie</router-link>
     </div>
     <router-view />
   </div>
@@ -63,3 +67,16 @@
   color: grey;
 }
 </style>
+
+<script>
+export default {
+  data: function () {
+    return {};
+  },
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>
