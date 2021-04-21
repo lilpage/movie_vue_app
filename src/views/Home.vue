@@ -5,20 +5,21 @@
       <h1 class="display-4">Movies!</h1>
       <p class="lead">Do you like movies?</p>
       <hr class="my-4">
-      <p>I like movies.</p>
-    </div>
+    <!-- Html Extra Checkbox -->
+    <input type="checkbox" name="likeMovies"> <label for="likeMovies"> Yes, I like movies</label>
     <!-- Index -->
-  <div class="row">
-    <div class="col-sm-6" v-for="movie in movies" v-bind:key="movie.id">
-      <div class="card">
-        <div class="card-body">
-          <h2>{{ movie.title }}</h2>
-          <h3>Director: {{ movie.director }}, Year: {{ movie.year }}</h3>
-          <p> {{ movie.plot }} </p>
+    </div>
+      <div class="row">
+        <div class="col-sm-6" v-for="movie in movies" v-bind:key="movie.id">
+          <div class="card">
+            <div class="card-body">
+              <h2>{{ movie.title }}</h2>
+              <h3>Director: {{ movie.director }}, Year: {{ movie.year }}</h3>
+              <p> {{ movie.plot }} </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
     <!-- <div v-for="movie in movies" v-bind:key="movie.id"> -->
 
     <!-- Show -->
