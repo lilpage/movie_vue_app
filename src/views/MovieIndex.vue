@@ -1,27 +1,29 @@
 <template>
-  <div class="movie-index">
-     <div v-for="movie in movies" v-bind:key="movie.id">
-        <h2>{{ movie.title }}</h2>
-        <h3>Director: {{ movie.director }}, Year: {{ movie.year }}</h3>
-        <p> {{ movie.plot }} </p>
-        <router-link v-bind:to="`/movies/${movie.id}`"  >
-          <h3>See More</h3>
-        </router-link>
-        <!-- Search -->
-      </div>
-        Search by title: <input v-model="titleFilter">
-        <div v-for="movie in filterBy(movies, titleFilter, 'title')" v-bind:key="movie.id">
+  <div class="container movies-index">
+    Search by name:
+    <input v-model="titleFilter" list="titles" />
+    <datalist id="titles">
+      <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
+    </datalist>
+    <div><button v-on:click="orderBy(movie.title)">Sort Alphabetically</button></div>
+    <div
+      v-for="movie in orderBy(filterBy(movies, titleFilter, 'title'), 'title')"
+      v-bind:key="movie.id"
+      class="card mb-3"
+      style="max-width: 540px"
+    >
+      <div class="row no-gutters">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">{{ movie.title }}</h3>
+            <h5 class="card=text">{{ movie.director }} ({{ movie.year }})</h5>
+            <p class="card-text">
+              {{ movie.plot }}
+            </p>
+          </div>
         </div>
-        Search by name: <input v-model="titleFilter" list="titles">
-        <datalist id="titles">
-          <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
-        </datalist>
-      <!-- Sort -->
-      <div>
-        <button>Sort Alphabetically</button>
-        <div v-for="movie in orderBy(movies, 'title')">
-         <div v-for="movie in orderBy(filterBy(movies, titleFilter, 'title'), 'title')"> 
       </div>
+    </div>
   </div>
 </template>
 
